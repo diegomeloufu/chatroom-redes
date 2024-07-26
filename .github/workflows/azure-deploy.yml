@@ -21,5 +21,7 @@ jobs:
     - name: Deploy to Azure VM
       run: |
         ssh -o StrictHostKeyChecking=no -i azure_vm_key.pem ${{ secrets.AZURE_VM_USER }}@${{ secrets.AZURE_VM_IP }} << 'EOF'
+          cd ~/chatroom-redes
+          git pull origin main
           bash ~/chatroom-redes/install.sh
         EOF

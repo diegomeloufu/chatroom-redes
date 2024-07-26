@@ -1,6 +1,4 @@
 #!/bin/bash
-cd ~/chatroom-redes
-git pull origin main
 sudo apt update
 sudo apt install -y python3-venv
 python3 -m venv venv
