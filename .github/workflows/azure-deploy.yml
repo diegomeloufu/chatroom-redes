@@ -21,13 +21,5 @@ jobs:
     - name: Deploy to Azure VM
       run: |
         ssh -o StrictHostKeyChecking=no -i azure_vm_key.pem ${{ secrets.AZURE_VM_USER }}@${{ secrets.AZURE_VM_IP }} << 'EOF'
-          cd ~/chatroom-redes
-          git pull origin main
-          sudo apt update
-          sudo apt install -y python3-venv
-          python3 -m venv venv
-          . venv/bin/activate
-          pip install --upgrade pip
-          pip install -r requirements.txt
-          nohup python server.py 0.0.0.0 8000 &
+          bash ~/chatroom-redes/install.sh
         EOF
