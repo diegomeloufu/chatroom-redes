@@ -59,6 +59,9 @@ class Server():
             return False 
 
     def clientthread(self,client): 
+        client.send("HTTP/1.1 200 OK\r\n")
+        client.send("Content-Type: text/plain\r\n")
+        client.send("\r\n")
         # sends a message to the client whose user object is conn 
         client.send("Welcome to this chatroom!") 
 
@@ -221,6 +224,7 @@ class Server():
             # creates and individual thread for every user 
             # that connects 
             start_new_thread(self.clientthread,(client,))
+
 
 class Client():
     """Since, we will need to send messages and login specifics clients
